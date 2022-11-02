@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+    <style>
+        h1 {
+            text-align: center;
+            background-color: darkcyan;
+            color: white;
+            padding: 10px 0 10px 20px;
+        }
+        div {
+            text-align: center;
+        }
+        a {
+            font-size: 18px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Manager Customer</h1>
+    Language: <a href="?lang=en">English</a> | <a href="?lang=vn">Vietnamese</a>
+    <p><a th:href="@{/customers}" th:text="#{create_customer.list}"></a></p>
+    <p><a th:href="@{/provinces}" th:text="#{create_province.list}"></a></p>
+</div>
+</body>
+</html>

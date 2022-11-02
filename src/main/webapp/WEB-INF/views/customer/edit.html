@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/customer/layout::head">
+    <meta charset="UTF-8">
+    <title th:text="#{edit_customer.title}"></title>
+</head>
+<body>
+<h1 th:text="#{edit_customer.heading}"></h1>
+<p>
+    <a href="/customers" th:text="#{create_customer.list}"></a>
+</p>
+Language: <a href="?lang=en">English</a> | <a href="?lang=vn">Vietnamese</a>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-customer}" th:object="${customer}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td th:text="#{create_customer.firstname}"></td>
+            <td><input type="text" th:field="*{firstName}"/></td>
+        </tr>
+        <tr>
+            <td th:text="#{create_customer.lastname}"></td>
+            <td><input type="text" th:field="*{lastName}"/></td>
+        </tr>
+        <tr>
+            <td th:text="#{create_customer.province}"></td>
+            <td>
+                <select name="province">
+                    <option th:each="p : ${provinces}"
+                            th:value="${p.getId()}"
+                            th:text="${p.getName()}"
+                            th:selected="(${p.getId()} == *{province.id})"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" th:value="#{edit_customer.submit}"></td>
+        </tr>
+    </table>
+</form>
+<footer th:replace="/customer/layout :: footer"></footer>
+</body>
+</html>
